@@ -236,6 +236,54 @@
       </div>
   </div>
 
+<?php
+define("EMAIL", "syrilbobadilla_08@yahoo.com");
+ 
+if(isset($_POST['submit'])) {
+ 
+  include('validate.class.php');
+  
+  //assign post data to variables
+  $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $message = trim($_POST['message']);
+ 
+  //start validating our form
+  $v = new validate();
+  $v->validateStr($name, "name", 3, 75);
+  $v->validateEmail($email, "email");
+  $v->validateStr($message, "message", 5, 1000);  
+ 
+  if(!$v->hasErrors()) {
+        $header = "From: $email\n" . "Reply-To: $email\n";
+        $subject = "Contact Form Subject";
+        $email_to = EMAIL;
+ 
+        $emailMessage = "Name: " . $name . "\n";
+        $emailMessage .= "Email: " . $email . "\n\n";
+        $emailMessage .= $message;
+ 
+    //use php's mail function to send the email
+        @mail($email_to, $subject ,$emailMessage ,$header );  
+ 
+    //grab the current url, append ?sent=yes to it and then redirect to that url
+        $url = "http". ((!empty($_SERVER['HTTPS'])) ? "s" : "") . "://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+        header('Location: '.$url."?sent=yes");
+ 
+    } else {
+    //set the number of errors message
+    $message_text = $v->errorNumMessage();       
+ 
+    //store the errors list in a variable
+    $errors = $v->displayErrors();
+ 
+    //get the individual error messages
+    $nameErr = $v->getError("name");
+    $emailErr = $v->getError("email");
+    $messageErr = $v->getError("message");
+  }//end error check
+}// end isset
+?>
   <section id="contact">
     <div class="container">
     <div id="pencil-top">
@@ -247,21 +295,24 @@
       <p class="lead text-center">Have a project in mind?</br> Let's talk or just say "Hi!"</p>
 
     <div id="contact-form" class="center">
-      <form role="form" action="php/submit-form.php" method="post">
+    <span class="message"><?php echo $message_text; ?></span>
+    <?php echo $errors; ?>
+    <?php if(isset($_GET['sent'])): ?><h2>Your message has been sent :)</h2><?php endif; ?>
+      <form action="<?php echo $PHP_SELF; ?>#contact" method="post">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
-          <span id="errorName" class="formError"></span>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" value="<?php echo htmlentities($name); ?>">
+          <span class="errors"><?php echo $nameErr ?></span>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
+          <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo htmlentities($email); ?>">
           <span id="errorEmail" class="formError"></span>
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea class="form-control" rows="3" name="email" id="message" placeholder="Say Hi!"></textarea>
-          <span id="errorMessage" class="formError"></span>
+          <textarea class="form-control" rows="3" name="email" id="message" placeholder="Say Hi!"><?php echo htmlentities($message); ?></textarea>
+          <span class="errors"><?php echo $messageErr ?></span>
         </div>
         <button type="submit" class="btn btn-default" id="submit">Submit</button>
       </form>
