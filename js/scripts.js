@@ -33,8 +33,6 @@ jQuery(document).ready(function ($) {
 		$('#contact-form #formProgress').html('<img src="images/ajax-loader.gif" /> Sending&hellip;');
 		$('#contact-form #formProgress').fadeIn();
 		
-		// Disable the submit button
-		$('#contact-form #submit').attr("disabled", "disabled");
 		
 		// Clear and hide any error messages
 		$('#contact-form .formError').html('');
@@ -46,7 +44,6 @@ jQuery(document).ready(function ($) {
 		// Get the data from the form
 		var name=$('#contact-form #name').val();
 		var email=$('#contact-form #email').val();
-		var subject=$('#contact-form #subject').val();
 		var message=$('#contact-form #message').val();
 		
 		// Validate the data
@@ -88,8 +85,6 @@ jQuery(document).ready(function ($) {
 			$('#contact-form #formProgress').html('');
 			$('#contact-form #formProgress').hide();
 			
-			// Activate the submit button
-			$('#contact-form #submit').attr("disabled", "");
 			
 			return false;
 		}
@@ -98,7 +93,7 @@ jQuery(document).ready(function ($) {
 			cache: false
 		});
 		
-		var dataString = 'name='+ name + '&email=' + email + '&subject=' + subject + '&message=' + message;  
+		var dataString = 'name='+ name + '&email=' + email + subject + '&message=' + message;  
 		$.ajax({
 			type: "POST",
 			url: "php/submit-form-ajax.php",
@@ -120,15 +115,11 @@ jQuery(document).ready(function ($) {
 					alert('There was an error sending your email. Please try again.');
 				}
 				
-				// Activate the submit button
-				$('#contact-form #submit').attr("disabled", "");
 			},
 			error: function(ob,errStr) {
 				$('#contact-form #formProgress').html('');
 				alert('There was an error sending your email. Please try again.');
 				
-				// Activate the submit button
-				$('#contact-form #submit').attr("disabled", "");
 			}
 		});
 		

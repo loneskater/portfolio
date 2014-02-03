@@ -18,7 +18,7 @@
     <script src="js/respond.src.js"></script>
   <![endif]-->
 </head>
-<body>s
+<body>
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
@@ -125,17 +125,15 @@
         <div class="view view-blur mix graphic">
           <img src="images/s-ultrabook.jpg" class="img-responsive"/>
             <div class="mask">
-              <h2 class="hidden-xs">Ultra-book</h2>
-                <p class="hidden-xs hidden-sm">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                <a class="fancybox info" href="images/b-ultrabook.jpg" title="Ultrabook">View</a>
+              <a class="fancybox" href="images/b-ultrabook.jpg" title="Ultrabook"><h2>Ultrabook</h2></a>
+                <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
             </div>
         </div>
         <div class="view view-blur mix graphic">
           <img src="images/s-happy-easter.jpg" class="img-responsive"/>
             <div class="mask">
-              <h2>Happy Easter!</h2>
+              <a class="fancybox" href="images/b-happy-easter.jpg" title="Happy Easter!"><h2>Happy Easter!</h2></a>
                 <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                <a class="fancybox info" href="images/b-happy-easter.jpg" title="Happy Easter!">View</a>
             </div>
         </div>
         <div class="view view-blur mix graphic">
@@ -165,7 +163,7 @@
         <div class="view view-blur mix graphic typography">
           <img src="images/crunchbot.jpg" class="img-responsive"/>
             <div class="mask">
-              <h2>Crunchbot/h2>
+              <h2>Crunchbot</h2>
                 <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
                 <a href="#" class="info">View</a>
             </div>
@@ -261,8 +259,8 @@
           <span id="errorEmail" class="formError"></span>
         </div>
         <div class="form-group">
-          <label for="Message">Message</label>
-          <input type="text" rows="5" class="form-control" id="message" placeholder="Say Hi!">
+          <label for="message">Message</label>
+          <textarea class="form-control" rows="3" id="message" placeholder="Say Hi!"></textarea>
           <span id="errorMessage" class="formError"></span>
         </div>
         <button type="submit" class="btn btn-default" id="submit">Submit</button>

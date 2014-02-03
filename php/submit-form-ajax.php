@@ -6,7 +6,6 @@ if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) 
 
 $name=$_POST['name'];
 $email=$_POST['email'];
-$subject=$_POST['subject'];
 $message=$_POST['message'];
 
 $to='syrilbobadilla_08@yahoo.com';
@@ -18,7 +17,6 @@ $subject = $subject;
 $body='You have got a new message from the contact form on your website.'."\n\n";
 $body.='Name: '.$name."\n";
 $body.='Email: '.$email."\n";
-$body.='Subject: '.$subject."\n";
 $body.='Message: '."\n".$message."\n";
 	
 if(mail($to, $subject, $body, $headers)) {
