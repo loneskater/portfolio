@@ -1,6 +1,8 @@
 jQuery(document).ready(function ($) {
 
-    $('#Grid').mixitup();
+    $('#Grid').mixitup({
+    showOnLoad: 'graphic'
+    });
 
      $('.nav, #pencil2').localScroll({
            target:'body'
@@ -129,5 +131,9 @@ jQuery(document).ready(function ($) {
 });
  
 $(document).ready(function() {
-    $(".fancybox").fancybox();
-  });
+$(".fancybox")
+    .attr('rel', 'gallery')
+    .fancybox({
+        padding : 0
+    });
+});

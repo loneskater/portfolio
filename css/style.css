@@ -16,7 +16,6 @@ section {
 }
 h1 {
 	font-family: "Mensch";
-	font-size: 2em;
   letter-spacing: 2px;
 }
 h3 {
@@ -31,20 +30,34 @@ h4 {
   line-height: 140%;
   font-weight: 700;
 }
+a, .controls li {
+    -webkit-transition:color .3s ease-in;
+    -moz-transition:color .3s ease-in;
+    -o-transition:color .3s ease-in;
+    transition:color .3s ease-in;
+}
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
 footer {
   width: 100%;
-  height: 80px;
+  height: 50px;
   background-color: #ebf070;
-  padding: 20px;
+  padding: 15px;
   margin-top: 30px;
 }
 #title h1 {
-  width: 279px;
-  height: 49px;
-  background-image: url(../images/title-bg-2x.jpg);
-  margin: 0 auto;
+  width: 220px;
+  height: 39px;
+  background-image: url(../images/title-bg.jpg);
+  line-height: 39px;
+  font-size: 1.5em;
   color: #fff;
-  line-height: 49px;
+  margin: 0 auto;
+}
+.view h2 {
+  font-size: 1em;
 }
 .lead {
   padding: 20px 0;
@@ -120,6 +133,9 @@ footer {
 #home {
   margin-top: 50px;
 }
+#home img {
+  margin-bottom: 20px;
+}
 
 /*about*/
 #title2 {
@@ -137,7 +153,9 @@ footer {
   font-weight: 700;
   font-size: 15px;
 }
-
+#quotes img {
+  padding: 50px 0;
+}
 /*Portfolio*/
 #Grid {
   width: 100%;
@@ -162,12 +180,15 @@ footer {
 	padding: 20px 0;
 }
 
-.controls li{
+.controls li {
 	cursor: pointer;
 }
-
-.controls li.active{
+.controls li:hover {
+  color: #ef4157;
+}
+.controls li.active {
 	font-weight: 700;
+  color: #ef4157;
 }
 
 /*portfolio hover*/
@@ -178,7 +199,10 @@ footer {
    position: relative;
    text-align: center;
    cursor: default;
-   background: #fff url(../images/bgimg.jpg) no-repeat center center;
+   background: #95CFB7;
+}
+.view:hover {
+  cursor: pointer;
 }
 .view .mask,.view .content {
    position: absolute;
@@ -191,15 +215,17 @@ footer {
    position: relative;
 }
 .view h2 {
-   font-family: Lato, serif;
+   font-family: "Mensch";
    text-transform: uppercase;
    color: #fff;
    text-align: center;
    position: relative;
    font-size: 17px;
-   padding: 10px;
    background: rgba(0, 0, 0, 0.8);
-   margin: 20px 0 0 0;
+   letter-spacing: 2px;
+}
+.view h2:hover {
+    color: #fff;
 }
 .view p {
    font-size: 13px;
@@ -215,7 +241,6 @@ footer {
    background: #95CFB7;
    color: #fff;
    text-transform: uppercase;
-   margin-top: 5px;
 }
 .view a.info: hover {
    -webkit-box-shadow: 0 0 5px #000;
@@ -242,18 +267,17 @@ footer {
    transition: all 0.5s linear;
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
    filter: alpha(opacity=0);
-   opacity: 0;
+   opacity: 1;
 }
 .view-blur h2 {
-   border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
-   background: transparent;
-   margin: 20px 40px 0px 40px;
+    padding: 10px;
+    background: #ef4157;
    -webkit-transform: scale(0);
    -moz-transform: scale(0);
    -o-transform: scale(0);
    -ms-transform: scale(0);
    transform: scale(0);
-   color: #333;
+   color: #fff;
    -webkit-transition: all 0.5s linear;
    -moz-transition: all 0.5s linear;
    -o-transition: all 0.5s linear;
@@ -321,18 +345,8 @@ footer {
 }
 
 /*contact*/
-#contact-form {
-  width: 50%;
-}
-.btn-default {
-  border-color: #ef4157;
-  color: #ef4157;
-  font-weight: 700; 
-}
-.btn-default:hover{
-  border-color: #ef4157;
-  background-color: #ef4157;
-  color: #fff;
+#contact {
+  padding-bottom: 20px;
 }
 
 /*media queries*/
@@ -340,19 +354,19 @@ footer {
 
 
 /*small screen*/
-@media (max-width: 650px) {
+@media (min-width: 758px) {
   #title h1 {
-    width: 220px;
-    height: 39px;
-    background-image: url(../images/title-bg.jpg);
-    line-height: 39px;
-    font-size: 1.5em;
+    width: 279px;
+    height: 49px;
+    background-image: url(../images/title-bg-2x.jpg);
+    line-height: 49px;
+    font-size: 2em;
   }
-  #contact-form {
-    width: 90%;
-  }
-  #contact {
-    padding-bottom: 10px;
+  .navbar-nav{
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    float:none;
   }
 }
 
